@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fastapi-sqlalchemy-postgres-project"
+version = "0.1.0"
+description = ""
+authors = ["Daniel"]
+readme = "README.md"
+packages = [{include = "fastapi_sqlalchemy_postgres_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+uvicorn = "^0.22.0"
+fastapi = "^0.95.2"
+pydantic = "^1.10.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
