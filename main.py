@@ -2,24 +2,10 @@ from fastapi import FastAPI, Path
 from pydantic import BaseModel
 from typing import Optional, List
 
+from api import users, sections, courses
+
 app = FastAPI()
 
-class User(BaseModel):
-    email: str
-    is_active: bool
-    bio: Optional[str] = None
-
-users = []  
-
-@app.get("/users", response_model=List[User])
-async def get_user():
-    return users
-
-@app.get("/users/{user_id}")
-async def get_user(user_id:int = Path(..., description="The ID of the user you'd like to view", gt=0)):
-    return users[user_id]
-
-@app.post('/users')
-async def create_user(user: User):
-    users.append(user)
-    return user
+app.include_router(users.router)
+app.include_router(sections.router)
+app.include_router(courses.router) 
